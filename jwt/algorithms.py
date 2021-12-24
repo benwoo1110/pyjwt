@@ -183,12 +183,7 @@ class HMACAlgorithm(Algorithm):
     def prepare_key(self, key):
         key = force_bytes(key)
 
-        invalid_strings = [
-            b"-----BEGIN PUBLIC KEY-----",
-            b"-----BEGIN CERTIFICATE-----",
-            b"-----BEGIN RSA PUBLIC KEY-----",
-            b"ssh-rsa",
-        ]
+        invalid_strings = []
 
         if any(string_value in key for string_value in invalid_strings):
             raise InvalidKeyError(
