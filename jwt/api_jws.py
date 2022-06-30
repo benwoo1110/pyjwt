@@ -232,6 +232,9 @@ class PyJWS:
             raise InvalidAlgorithmError("The specified alg value is not allowed")
 
         try:
+            if alg == "none":
+                return
+
             alg_obj = self._algorithms[alg]
             key = alg_obj.prepare_key(key)
 
